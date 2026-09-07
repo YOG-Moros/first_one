@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的自我介绍</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f5f0;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-soft: #d9f5f1;
+      --line: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 40%),
+        linear-gradient(180deg, #fbfaf7, var(--bg));
+      color: var(--text);
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px 20px;
+    }
+
+    .container {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+
+    .hero, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(31, 41, 55, 0.06);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      padding: 28px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 180px;
+      aspect-ratio: 1;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #0f766e, #22c55e);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 62px;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin-left: auto;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 38px;
+      line-height: 1.15;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .footer {
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      padding: 6px 0 20px;
+    }
+
+    @media (max-width: 840px) {
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar {
+        margin: 0;
+        width: 140px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="page">
+    <main class="container">
+      <section class="hero">
+        <div>
+          <span class="kicker">{{ motto }}</span>
+          <h1>{{ name }}</h1>
+          <p class="lead">{{ intro }}</p>
+        </div>
+        <div class="avatar">{{ initials }}</div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>个人信息</h2>
+          <ul>
+            <li>学校 / 专业：{{ school }}</li>
+            <li>方向：{{ direction }}</li>
+            <li>当前状态：{{ status }}</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>技能标签</h2>
+          <div class="skills">
+            <span v-for="item in skills" :key="item" class="tag">{{ item }}</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>联系我</h2>
+          <ul>
+            <li>邮箱：{{ email }}</li>
+            <li>GitHub：{{ github }}</li>
+            <li>目标：{{ goal }}</li>
+          </ul>
+        </article>
+      </section>
+
+      <p class="footer">这是一个用 Vue CDN 写出来的自我介绍页面，适合当作前端工程化作业的起点。</p>
+    </main>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+          name: '你好，我是前端工程化学习者',
+          motto: '学习、实践、整理、复盘',
+          intro: '我正在通过 Vue、Git 和基础工程化工具练习搭建清晰、可维护的前端页面。',
+          school: '待填写',
+          direction: '前端开发 / 工程化学习',
+          status: '持续学习中',
+          skills: ['HTML', 'CSS', 'JavaScript', 'Vue 3', 'Git'],
+          email: 'your-email@example.com',
+          github: 'github.com/your-name',
+          goal: '把每次练习都变成可以展示的作品'
+        }
+      },
+      computed: {
+        initials() {
+          return '我'
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

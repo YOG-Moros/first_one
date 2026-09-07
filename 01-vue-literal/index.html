@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 字面量练习</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --text: #132238;
+      --muted: #5d6b82;
+      --primary: #3b82f6;
+      --primary-soft: #e8f0ff;
+      --border: #d9e2ef;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .wrap {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .panel {
+      width: min(720px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(19, 34, 56, 0.08);
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    p {
+      margin: 8px 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .count {
+      margin: 22px 0 14px;
+      padding: 18px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      font-size: 18px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button + button {
+      margin-left: 10px;
+      background: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="wrap">
+    <section class="panel">
+      <h1>{{ title }}</h1>
+      <p>{{ intro }}</p>
+      <div class="count">当前计数：{{ count }}</div>
+      <button @click="count++">点我 +1</button>
+      <button @click="reset">重置</button>
+    </section>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+          title: 'Vue 字面量练习',
+          intro: '这是一个使用 Vue CDN 直接挂载的入门页面，用来练习插值和事件绑定。',
+          count: 0
+        }
+      },
+      methods: {
+        reset() {
+          this.count = 0
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
