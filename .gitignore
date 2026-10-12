@@ -1,10 +1,35 @@
+# node 依赖
 node_modules/
+
+# 构建产物
 dist/
 build/
+dist-ssr/
+
+# 本地环境变量（保留 .env.development 与 .env.production）
 .env
 .env.local
-.vscode/
+.env.*.local
+
+# 编辑器配置（保留共享的 settings.json 与 extensions.json）
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
+
+# 系统文件
 .DS_Store
 *.log
+pnpm-debug.log*
 
+# 测试与覆盖率
+coverage/
+
+# AI 助手本地工作数据
+.workbuddy/
+.zcode/
+.zcodeignore
+
+# 本地参考资料与生成产物（不属于课程提交物）
+read/
+output/
