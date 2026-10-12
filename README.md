@@ -8,14 +8,19 @@
 ```
 first_one/
 ├── docs/                          课程资料（任务清单等）
-├── module-01-toolchain/           模块一 · 工程化认知与工具链
+├── module-01-toolchain/           模块一 · 工程化认知与工具链（单元 1-3）
 │   └── unit-02-package-vite/      单元 2 · 依赖与 Vite 脚手架
 │       ├── vite-scaffold-npm/     npm 方式初始化的脚手架对照样本
 │       └── vite-scaffold-pnpm/    pnpm 方式初始化的脚手架对照样本
-└── module-02-vue-core/            模块二 · Vue 3 核心基础
-    ├── unit-04-getting-started/   单元 4 · CDN 入门练习
-    ├── unit-05-score-board/       单元 5 · 成绩单界面作业
-    └── practice-app/              青柠圈 · 指令综合练习
+├── module-02-vue-core/            模块二 · Vue 3 核心基础（单元 4-6）
+│   ├── unit-04-getting-started/   单元 4 · CDN 入门练习
+│   ├── unit-05-score-board/       单元 5 · 成绩单界面作业
+│   └── practice-app/              青柠圈 · 指令综合练习
+├── module-03-components/          模块三 · 组件化开发（单元 7-8，待开课）
+├── module-04-architecture/        模块四 · 应用架构（单元 9-10，待开课）
+├── templates/
+│   └── vue3-vite-starter/         工程模板（模块一产出，待产出）
+└── uniapp-port/                   跨端拓展 · uni-app 移植（选学，待开始）
 ```
 
 ## 练习导航
